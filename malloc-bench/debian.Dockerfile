@@ -1,4 +1,4 @@
-FROM node:20.11.1-bookworm-slim
+FROM node:20.11.1-bookworm
 
 ENV CI=1
 
@@ -11,4 +11,7 @@ RUN corepack pnpm i && corepack pnpm store prune
 
 ADD . /app
 
-CMD ./node_modules/.bin/rspack build
+RUN apt update && apt install -y time
+COPY rspack.linux-x64-gnu.node /app/node_modules/@rspack/binding/
+
+CMD /usr/bin/time -v node ./node_modules/.bin/rspack build

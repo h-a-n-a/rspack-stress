@@ -9,6 +9,6 @@ for name in $cases; do
 done
 for name in $cases; do
   echo "Running case ${name}"
-  docker run --rm "rspack-malloc-bench:$name" ./node_modules/@rspack/cli/bin/rspack build
+  docker run --rm "rspack-malloc-bench:$name"
   echo
 done

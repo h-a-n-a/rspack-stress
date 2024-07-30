@@ -12,4 +12,4 @@ RUN corepack pnpm i && corepack pnpm store prune
 ADD . /app/
 COPY rspack.linux-arm64-musl.node /app/node_modules/@rspack/binding/
 
-CMD ./node_modules/.bin/rspack build
+CMD /usr/bin/time -v node ./node_modules/.bin/rspack build
